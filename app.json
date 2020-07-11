@@ -1,0 +1,12 @@
+{
+  "name": "mobileBanking",
+  "displayName": "mobileBanking",
+  "expo": {
+    "name": "mobileBanking",
+    "slug": "mobileBanking",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
