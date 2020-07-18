@@ -9,7 +9,8 @@ import Card from './src/Tabs/card';
 import Activity from './src/Tabs/activity';
 import Locator from './src/Tabs/locator';
 import Setting from './src/Tabs/settings';
-import CardDetails from './src/Screen/cardDetails'
+import CardDetails from './src/Screen/cardDetails';
+import FundCard from './src/Screen/fundCard';
 import IconFeather from 'react-native-vector-icons/Feather';
 import IconEvilIcons from 'react-native-vector-icons/EvilIcons';
 
@@ -22,15 +23,6 @@ export default class App extends Component{
     return(
 
       <bottomTabs.Navigator>
-        <bottomTabs.Screen name="Card" size={30} component={Card} 
-            options={{
-              tabBarLabel:'Card',
-              tabBarIcon: () => (
-                <IconFeather size={25} name="credit-card"/>
-              )
-            }}
-        />
-        
         <bottomTabs.Screen name="Home" size={30} component={Home} 
           options={{
             tabBarLabel:'Home',
@@ -38,6 +30,16 @@ export default class App extends Component{
               <IconFeather size={25} name="home"/>
             )
           }}
+        />
+
+
+        <bottomTabs.Screen name="Card" size={30} component={Card} 
+            options={{
+              tabBarLabel:'Card',
+              tabBarIcon: () => (
+                <IconFeather size={25} name="credit-card"/>
+              )
+            }}
         />
         
         <bottomTabs.Screen name="Locator" size={30} component={Locator} 
@@ -76,6 +78,7 @@ export default class App extends Component{
           <stack.Screen name="bottmTabs" options={{headerShown:false}}
             children={this.createBottomTabNavigator}/>
           <stack.Screen name="CardDetail" options={{headerShown:false}} component={CardDetails}/>
+          <stack.Screen name="FundCard" options={{headerShown:false}} component={FundCard} />
         </stack.Navigator>
       </NavigationContainer>
     );

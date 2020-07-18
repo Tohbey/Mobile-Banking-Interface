@@ -96,11 +96,6 @@ const styles = StyleSheet.create({
         fontSize:14,
         color:'black'
     },
-    seeText:{
-        fontWeight:'bold',
-        fontSize:14,
-        color: '#000080',
-    },
     upperPart:{
         flex:1,
         padding: 5,
@@ -155,7 +150,7 @@ const styles = StyleSheet.create({
     seeText:{
         fontWeight:'bold',
         fontSize:14,
-        color: '#000080'
+        color: '#0036d4'
     },
     recentText:{
         fontWeight:'bold',

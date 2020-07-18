@@ -151,12 +151,12 @@ const styles = StyleSheet.create({
         width: 80,
         borderRadius:3,
         alignItems: 'center',
-        backgroundColor: '#73c2fb',
+        backgroundColor: '#e1eaff',
         justifyContent:'flex-start',
     },
     buttonText: {
         textAlign: 'center',
-        color: '#000080',
+        color: '#0036d4',
     },
     cardBox:{
         flexDirection:'column'

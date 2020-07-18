@@ -1,114 +1,220 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { 
     View,
     Text,
     StyleSheet,
     TouchableWithoutFeedback,
     ImageBackground,
-    Image 
+    Image
 } from 'react-native';
-import Image1 from '../assets/images/ic/art-creative-blue-design.jpg';
-import Image2 from '../assets/images/ic/pink-and-purple-wallpaper.jpg';
-import Image3 from '../assets/images/ic/teal_white.jpg';
-import MasterCard from '../assets/images/ic/mastercard.png';
-import VisaCard from '../assets/images/ic/visa.png';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import Entypo from 'react-native-vector-icons/Entypo'
-import MaterialIcons from 'react-native-vector-icons/Entypo'
-import Netflix from '../assets/images/ic/Netflix.png';
-import Spotify from '../assets/images/ic/Spotify.png';
-import Jack from '../assets/images/ic/JackDorsey3.png';
-import Lena from '../assets/images/ic/MaskGroup3.png';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 import RecentTransaction from '../Container/recentTransaction';
+import Modal from 'react-native-modal'; 
+import CardDetail from '../Container/cardDetail';
 
 
 const cardDetails = ({route,navigation},props) =>  {
-    const card = route.params
-    console.log(card)
-    const cardTransaction = card.transactions;
-    let transactions = null;
-    if(card.transactions.length === 0){
-        transactions = 'Empty'
-        console.log(transactions)
+    const cards = route.params
+    console.log(cards)
+    let transactions
+    const [cardDetails, setcardDetails] = useState(cards)
+    const [modalOpen1, setmodalOpen1] = useState(false)
+    const [modalOpen2, setmodalOpen2] = useState(false)
+    if(cardDetails.transactions.length === 0){
+        transactions = <Text>Empty Transactions</Text>
     }
     let transactionsDetails = <View>
-        {cardTransaction.map((transactions,index) => {
-                return <RecentTransaction
-                    key={index}
-                    image={transactions.profile}
-                    name={transactions.name}
-                    time={transactions.time}
-                    transactionType={transactions.transactionType}
-                    amount={transactions.amount}/>
-                }
+        {cardDetails.transactions.map((transactions,index) => {
+            return <RecentTransaction
+                key={index}
+                image={transactions.profile}
+                name={transactions.name}
+                time={transactions.time}
+                transactionType={transactions.transactionType}
+                amount={transactions.amount}/>
+            }
         )}
     </View>
+
     
+
     return (
-        <View style={styles.box}>
-            <TouchableWithoutFeedback 
-                onPress={() => navigation.goBack()}>
-                <View>
-                    <Ionicons size={25} name='ios-arrow-back'/>
-                </View>
-            </TouchableWithoutFeedback>
-            <View>
-                <TouchableWithoutFeedback>
-                    <ImageBackground source={card.cardWallpaper} style={styles.cardContainer}>
-                        <View style={styles.cardDetails}>
-                            <View style={styles.upperDetail}>
-                                <Text style={styles.amount}>{card.amount}</Text>
-                                <Image source={card.cardType} style={styles.imageHolder} resizeMode="contain"/>
-                            </View>
-                            <View style={styles.lowerDetail}>
-                                <Text style={styles.cardText}>{card.cardNumber}</Text>
-                                <Text style={styles.expText}>{card.expDate}</Text>
-                            </View>
-                        </View>
-                    </ImageBackground>
-                </TouchableWithoutFeedback>
-            </View>
-            <View style={styles.optionBox}>
-                <TouchableWithoutFeedback>
-                    <View style={styles.button}>
-                        <Ionicons size={25} name="ios-add" style={styles.buttonIcon}/>
-                        <Text style={styles.buttonText}>Fund card</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback>
-                    <View style={styles.button}>
-                        <Ionicons size={25} name="ios-information-circle-outline" style={styles.buttonIcon}/>
-                        <Text style={styles.buttonText}>Card information</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback>
-                    <View style={styles.button}>
-                        <Entypo size={25} name='dots-three-horizontal' style={styles.buttonIcon}/>
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
-            <View style={styles.header}>
-                <Text style={styles.recentText}>Recent Transaction</Text>
-                <TouchableWithoutFeedback>
+        <View style={styles.BiggerBox}>
+            <View style={styles.box}>
+                <TouchableWithoutFeedback 
+                    onPress={() => navigation.goBack()}>
                     <View>
-                        <Text style={styles.seeText}>See all</Text>
+                        <MaterialIcon size={25} name='keyboard-backspace'/>
                     </View>
                 </TouchableWithoutFeedback>
+                <View>
+                    <TouchableWithoutFeedback>
+                        <ImageBackground source={cardDetails.cardWallpaper} style={styles.cardContainer}>
+                            <View style={styles.cardDetails}>
+                                <View style={styles.upperDetail}>
+                                    <Text style={styles.amount}>{cardDetails.amount}</Text>
+                                    <Image source={cardDetails.cardType} style={styles.imageHolder} resizeMode="contain"/>
+                                </View>
+                                <View style={styles.lowerDetail}>
+                                    <Text style={styles.cardText}>{cardDetails.cardNumber}</Text>
+                                    <Text style={styles.expText}>{cardDetails.expDate}</Text>
+                                </View>
+                            </View>
+                        </ImageBackground>
+                    </TouchableWithoutFeedback>
+                </View>
+                <View style={styles.optionBox}>
+                    <TouchableWithoutFeedback
+                        onPress={() => navigation.navigate('FundCard')}>
+                        <View style={styles.button}>
+                            <Ionicons size={25} name="ios-add" color='#0036d4' style={styles.buttonIcon}/>
+                            <Text style={styles.buttonText}>Fund card</Text>
+                        </View>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback
+                        onPress={() => setmodalOpen1(true)}>
+                        <View style={styles.button}>
+                            <Ionicons size={25} name="ios-information-circle-outline" color='#0036d4' style={styles.buttonIcon}/>
+                            <Text style={styles.buttonText}>Card information</Text>
+                        </View>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback
+                        onPress={() => setmodalOpen2(true)}>
+                        <View style={styles.button}>
+                            <Entypo size={25} name='dots-three-horizontal' color='#0036d4' style={styles.buttonIcon}/>
+                        </View>
+                    </TouchableWithoutFeedback>
+                </View>
+                <View style={styles.header}>
+                    <Text style={styles.recentText}>Recent Transaction</Text>
+                    <TouchableWithoutFeedback>
+                        <View>
+                            <Text style={styles.seeText}>See all</Text>
+                        </View>
+                    </TouchableWithoutFeedback>
+                </View>
+                <View style={styles.list}>
+                    {transactions}
+                    {transactionsDetails}
+                </View>
             </View>
-            <View style={styles.list}>
-                <Text>{transactions}</Text>
-                {transactionsDetails}
-            </View>
-        </View>
+            <Modal 
+                isVisible={modalOpen1} style={styles.cardModal}
+                coverScreen={true} onBackdropPress={() => setmodalOpen1(false)}
+                onSwipeComplete={() => setmodalOpen1(false)} swipeDirection="left">
+                <CardDetail
+                    name="Fafowora Oluwatobiloba"
+                    cardNumber={cardDetails.cardNumber}
+                    cvv="123"
+                    address="House 333,Rolands Drive"
+                    city="Albany"
+                    state="New york"
+                    cardPin="1234"
+                    />
+            </Modal>
+            <Modal 
+                isVisible={modalOpen2} style={styles.modal}
+                coverScreen={true} onBackdropPress={() => setmodalOpen2(false)}
+                onSwipeComplete={() => setmodalOpen2(false)} swipeDirection="left">
+                <View style={styles.modalInnerContainer}>
+                    <Text style={{fontSize:20,color:'black',marginBottom:30}}>What do you want to do? </Text>
+                    <View style={styles.innerHolder}>
+                        <View style={styles.innerHolder1}>
+                            <MaterialIcon size={25} name="water-outline" style={styles.smallBox} color='#1345f2'/>                            
+                        </View>
+                        <View style={styles.innerHolder2}>
+                            <Text style={{fontSize:17,color:'black',fontWeight:'bold'}}>Liquidate funds</Text>
+                        </View>
+                        <View style={styles.innerHolder3}>
+                            <SimpleLineIcon size={15} name="arrow-right" />                            
+                        </View> 
+                    </View>
+                    <View style={styles.innerHolder}>
+                        <View style={styles.innerHolder1}>
+                            <Fontisto size={25} name="snowflake-2" style={styles.smallBox} color='#1345f2'/>
+                        </View>
+                        <View style={styles.innerHolder2}>
+                            <Text style={{fontSize:17,color:'black',fontWeight:'bold'}}>Freeze Card</Text>
+                        </View>
+                        <View style={styles.innerHolder3}>
+                            <Text>1</Text>
+                        </View> 
+                    </View>
+                    <View style={styles.innerHolder}>
+                        <View style={styles.innerHolder1}>
+                            <MaterialIcon size={20} name="delete-outline" style={styles.deleteBox} color='#ee2b2a'/>
+                        </View>
+                        <View style={styles.innerHolder2}>
+                            <Text style={{fontSize:17,color:'black',fontWeight:'bold'}}>Delete Card</Text>
+                        </View>
+                        <View style={styles.innerHolder3}>
+                            <SimpleLineIcon size={15} name="arrow-right" />
+                        </View>
+                    </View>
+                </View>
+            </Modal>
+        </View>    
     )
 }
 
 const styles = StyleSheet.create({
+    cardModal:{
+        marginTop:375,
+        marginLeft:0
+    },
+    modal:{
+        marginTop:392,
+        marginLeft:0
+    },
+    modalInnerContainer: {
+        backgroundColor: 'white',
+        padding: 30,
+        height: 280,
+        width:415,
+        borderTopLeftRadius: 40,
+        borderTopRightRadius: 40,
+    },
+    innerHolder:{
+        marginBottom:30,
+        flexDirection:'row',
+        justifyContent:'space-between'
+    },
+    innerHolder1:{
+        flex:2,
+        flexDirection:'row',
+    },
+    innerHolder2:{
+        flex:6,
+        marginRight:100,
+        flexDirection:'row',
+    },
+    innerHolder3:{
+        flex:1,
+        flexDirection:'row',
+    },
+    smallBox:{
+        padding:3,
+        backgroundColor:'#e1eaff',
+        borderRadius:2
+    },
+    deleteBox:{
+        padding:3,
+        borderRadius:2,
+        backgroundColor:'#ffdfe0',
+    }, 
     box:{
         flex: 1,
         backgroundColor: 'white',
         flexDirection:'column',
         padding: 20,
+    },
+    BiggerBox:{
+        flex:1,
+        flexDirection:'column'    
     },
     cardContainer:{
         marginTop:10,
@@ -126,7 +232,7 @@ const styles = StyleSheet.create({
     upperDetail:{
         flexDirection:'row',
         justifyContent:'space-between',
-        marginBottom:73,
+        marginBottom:67,
     },
     lowerDetail:{
         flexDirection:'row',
@@ -160,7 +266,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRadius:3,
         alignItems: 'center',
-        backgroundColor: '#73c2fb',
+        backgroundColor: '#e1eaff',
         justifyContent:'flex-start',
     },
     buttonIcon:{
@@ -170,7 +276,7 @@ const styles = StyleSheet.create({
     buttonText: {
         textAlign: 'center',
         fontSize:15,
-        color: '#000080',
+        color: '#0036d4',
         paddingRight: 7,
     },
     header:{

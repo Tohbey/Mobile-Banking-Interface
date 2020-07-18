@@ -3,7 +3,7 @@ import {
     View,
     Text, 
     StyleSheet,
-    TouchableWithoutFeedback,
+    TouchableOpacity,
     Image } 
 from 'react-native';
 import Netflix from '../assets/images/ic/Netflix.png';
@@ -15,7 +15,7 @@ const recentTransaction = (props) => {
     return (
         <View style={styles.box}>
             <View style={styles.list}>
-                <TouchableWithoutFeedback>
+                <TouchableOpacity>
                     <View style={styles.block}>
                         <View style={styles.mainDetail}>
                             <View>
@@ -30,7 +30,7 @@ const recentTransaction = (props) => {
                             <Text style={props.transactionType === 'Credit' ? styles.moneyReceived:styles.moneySent}>{props.transactionType === 'Credit'? '+':'-'}{props.amount}</Text>
                         </View>
                     </View>
-                </TouchableWithoutFeedback>
+                </TouchableOpacity>
             </View>
         </View>
     )

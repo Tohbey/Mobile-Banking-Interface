@@ -5,6 +5,7 @@ import {
     StyleSheet,
     TouchableHighlight,
     ScrollView,
+    TouchableOpacity,
     Image
  } from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
@@ -22,7 +23,7 @@ const headerContainer = () => {
                 <View>
                     <TouchableHighlight>
                         <View style={styles.button}>
-                            <IconAntDesign name="swap" size={20} color="#000080" style={{paddingRight:2}}/>
+                            <IconAntDesign name="swap" size={20} color='#0036d4' style={{paddingRight:2}}/>
                             <Text style={styles.buttonText}>Send/Request</Text>
                         </View>
                     </TouchableHighlight>
@@ -35,7 +36,7 @@ const headerContainer = () => {
                 <ScrollView horizontal={true}>
                     <View style={{flexDirection:"row",marginBottom:0}}>
                         <View style={styles.frequentBox}>
-                            <TouchableHighlight>
+                            <TouchableOpacity>
                                 <View>
                                     <View style={styles.frequentUpper}>
                                         <Image source={Jack} style={styles.imageHolder}/> 
@@ -45,10 +46,10 @@ const headerContainer = () => {
                                         <Text>Adegoke Damola</Text>
                                     </View>
                                 </View>
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.frequentBox}>
-                            <TouchableHighlight>
+                            <TouchableOpacity>
                                 <View>
                                     <View style={styles.frequentUpper}>
                                         <Image source={Lena} style={styles.imageHolder}/>  
@@ -58,10 +59,10 @@ const headerContainer = () => {
                                         <Text>Lena Applebee</Text>
                                     </View>
                                 </View>
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.frequentBox}>
-                            <TouchableHighlight>
+                            <TouchableOpacity>
                                 <View>
                                     <View style={styles.frequentUpper}>
                                         <Image source={Jack} style={styles.imageHolder}/>  
@@ -71,10 +72,10 @@ const headerContainer = () => {
                                         <Text>Jack Dorsey</Text>
                                     </View>
                                 </View>
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.frequentBox}>
-                            <TouchableHighlight>
+                            <TouchableOpacity>
                                 <View>
                                     <View style={styles.frequentUpper}>
                                         <Image source={Lena} style={styles.imageHolder}/>  
@@ -84,7 +85,7 @@ const headerContainer = () => {
                                         <Text>Lena Applebee</Text>
                                     </View>
                                 </View>
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </ScrollView>
@@ -123,12 +124,12 @@ const styles = StyleSheet.create({
         width: 130,
         borderRadius:3,
         alignItems: 'center',
-        backgroundColor: '#73c2fb',
+        backgroundColor: '#e1eaff',
         justifyContent:'flex-start',
     },
     buttonText: {
         textAlign: 'center',
-        color: '#000080',
+        color: '#0036d4',
     },
     lowerBox:{
         flex:1,
