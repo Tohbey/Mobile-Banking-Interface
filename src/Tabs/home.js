@@ -14,27 +14,27 @@ class Home extends Component {
         transactions:[
             {
                 name:'Jack Dorsey',time:'Today,12:15am',
-                amount:'$200.00',profile:Jack,
+                amount:'200.00',profile:Jack,
                 transactionType:'Debit'
             },
             {
                 name:'Lena Applebee',time:'Today,06:15pm',
-                amount:'$20.99',profile:Lena,
+                amount:'20.99',profile:Lena,
                 transactionType:'Credit'
             },
             {
                 name:'Spotify',time:'Yesterday,06:15pm',
-                amount:'$14.99',profile:Spotify,
+                amount:'14.99',profile:Spotify,
                 transactionType:'Debit'
             },
             {
                 name:'Netflix',time:'Yesterday,06:15pm',
-                amount:'$10.99',profile:Netflix,
+                amount:'10.99',profile:Netflix,
                 transactionType:'Debit'
             },
             {
                 name:'Jack Dorsey',time:'Today,12:15am',
-                amount:'$200.00',profile:Jack,
+                amount:'200.00',profile:Jack,
                 transactionType:'Credit'
             },
         ]

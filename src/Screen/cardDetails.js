@@ -5,7 +5,9 @@ import {
     StyleSheet,
     TouchableWithoutFeedback,
     ImageBackground,
-    Image
+    Image,
+    ScrollView,
+    Switch
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -24,10 +26,12 @@ const cardDetails = ({route,navigation},props) =>  {
     const [cardDetails, setcardDetails] = useState(cards)
     const [modalOpen1, setmodalOpen1] = useState(false)
     const [modalOpen2, setmodalOpen2] = useState(false)
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     if(cardDetails.transactions.length === 0){
         transactions = <Text>Empty Transactions</Text>
     }
-    let transactionsDetails = <View>
+    let transactionsDetails =  <ScrollView>
         {cardDetails.transactions.map((transactions,index) => {
             return <RecentTransaction
                 key={index}
@@ -38,7 +42,7 @@ const cardDetails = ({route,navigation},props) =>  {
                 amount={transactions.amount}/>
             }
         )}
-    </View>
+    </ScrollView>
 
     
 
@@ -141,7 +145,12 @@ const cardDetails = ({route,navigation},props) =>  {
                             <Text style={{fontSize:17,color:'black',fontWeight:'bold'}}>Freeze Card</Text>
                         </View>
                         <View style={styles.innerHolder3}>
-                            <Text>1</Text>
+                            <Switch 
+                                trackColor={{ false: "#767577", true: "#81b0ff" }}
+                                thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                                onValueChange={toggleSwitch}
+                                value={isEnabled}
+                            />
                         </View> 
                     </View>
                     <View style={styles.innerHolder}>
@@ -195,6 +204,7 @@ const styles = StyleSheet.create({
     innerHolder3:{
         flex:1,
         flexDirection:'row',
+        justifyContent:'center'
     },
     smallBox:{
         padding:3,
@@ -281,7 +291,8 @@ const styles = StyleSheet.create({
     },
     header:{
         flexDirection:'row',
-        justifyContent:'space-between'
+        justifyContent:'space-between',
+        marginBottom:15
     },
     seeText:{
         fontWeight:'bold',

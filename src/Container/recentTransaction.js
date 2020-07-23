@@ -27,7 +27,7 @@ const recentTransaction = (props) => {
                             </View>
                         </View>
                         <View>
-                            <Text style={props.transactionType === 'Credit' ? styles.moneyReceived:styles.moneySent}>{props.transactionType === 'Credit'? '+':'-'}{props.amount}</Text>
+                            <Text style={props.transactionType === 'Credit' ? styles.moneyReceived:styles.moneySent}>{props.transactionType === 'Credit'? '+':'-'}${props.amount}</Text>
                         </View>
                     </View>
                 </TouchableOpacity>

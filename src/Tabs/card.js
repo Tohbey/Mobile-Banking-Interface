@@ -27,22 +27,22 @@ class card extends Component{
                 transactions:[
                     {
                         name:'Jack Dorsey',time:'Today,12:15am',
-                        amount:'$200',profile:Jack,
+                        amount:'200.00',profile:Jack,
                         transactionType:'Debit'
                     },
                     {
                         name:'Lena Applebee',time:'Today,06:15pm',
-                        amount:'$200',profile:Lena,
+                        amount:'200.00',profile:Lena,
                         transactionType:'Credit'
                     },
                     {
                         name:'Spotify',time:'Yesterday,06:15pm',
-                        amount:'$14.99',profile:Spotify,
+                        amount:'14.99',profile:Spotify,
                         transactionType:'debit'
                     },
                     {
                         name:'Netflix',time:'Yesterday,06:15pm',
-                        amount:'$10.99',profile:Netflix,
+                        amount:'10.99',profile:Netflix,
                         transactionType:'debit'
                     }
                 ]
@@ -53,17 +53,17 @@ class card extends Component{
                 transactions:[
                     {
                         name:'Jack Dorsey',time:'Today,12:15am',
-                        amount:'$200',profile:Jack,
+                        amount:'200.00',profile:Jack,
                         transactionType:'Debit'
                     },
                     {
                         name:'Lena Applebee',time:'Today,06:15pm',
-                        amount:'$200',profile:Lena,
+                        amount:'200.00',profile:Lena,
                         transactionType:'Credit'
                     },
                     {
                         name:'Spotify',time:'Yesterday,06:15pm',
-                        amount:'$14.99',profile:Spotify,
+                        amount:'14.99',profile:Spotify,
                         transactionType:'debit'
                     },
                 ]
