@@ -15,7 +15,8 @@ const recentTransaction = (props) => {
     return (
         <View style={styles.box}>
             <View style={styles.list}>
-                <TouchableOpacity>
+                <TouchableOpacity 
+                    onPress={props.click}>
                     <View style={styles.block}>
                         <View style={styles.mainDetail}>
                             <View>
@@ -70,13 +71,13 @@ const styles = StyleSheet.create({
     },
     moneySent: {
         paddingTop:6,
-        color: 'red',
+        color: '#f91c1d',
         fontSize: 16,
         fontWeight: '700',
     },
     moneyReceived: {
         paddingTop:6,
-        color: 'green',
+        color: '#31bb65',
         fontSize: 16,
         fontWeight: '700',
     },

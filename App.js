@@ -11,6 +11,7 @@ import Locator from './src/Tabs/locator';
 import Setting from './src/Tabs/settings';
 import CardDetails from './src/Screen/cardDetails';
 import FundCard from './src/Screen/fundCard';
+import TransactionSummary from './src/Screen/transactionSummary';
 import IconFeather from 'react-native-vector-icons/Feather';
 import IconEvilIcons from 'react-native-vector-icons/EvilIcons';
 
@@ -79,6 +80,8 @@ export default class App extends Component{
             children={this.createBottomTabNavigator}/>
           <stack.Screen name="CardDetail" options={{headerShown:false}} component={CardDetails}/>
           <stack.Screen name="FundCard" options={{headerShown:false}} component={FundCard} />
+          <stack.Screen name="TransactionSummary" component={TransactionSummary} 
+            options={{title:'Transaction Summary'}}/>
         </stack.Navigator>
       </NavigationContainer>
     );

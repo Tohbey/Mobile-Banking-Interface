@@ -59,6 +59,7 @@ class activity extends Component {
                     return <RecentTransaction
                         key={index}
                         image={transactions.profile}
+                        click={() => this.props.navigation.navigate('TransactionSummary',transactions)}
                         name={transactions.name}
                         time={transactions.time}
                         transactionType={transactions.transactionType}
@@ -81,7 +82,7 @@ class activity extends Component {
                         backgroundGradientFrom: 'white',
                         backgroundGradientTo: 'white',
                         decimalPlaces: 2, // optional, defaults to 2dp
-                        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
+                        color: (opacity = 1) => `rgba(70, 114, 240, ${opacity})`,
                         style: {
                             borderRadius: 19,
                          }
